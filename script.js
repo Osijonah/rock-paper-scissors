@@ -1,19 +1,11 @@
 /* 
 1. plan or pseudocode solution
-
 playGame(5) call
 as long as round is not 0 call playRound
-
 
 2. write code
 3. test code
  */
-
-
-
-
-
-// console.log(playRound(humanChoice, computerChoice));
 
 const playGame = ( rounds ) => {
     
@@ -48,28 +40,36 @@ for ( ; rounds > 0; rounds-- ) {
     const getHumanChoice = () => {
         let promptChoice = prompt(`rock, paper or scissors? `)
         
-        return promptChoice.charAt(0).toUpperCase() + promptChoice.slice(1).toLowerCase();
+        if (promptChoice === `rock` || promptChoice === `paper` || promptChoice === `scissors` ) return promptChoice.charAt(0).toUpperCase() + promptChoice.slice(1).toLowerCase();
+        else {
+            alert(`That was an invalid input, please enter one of these: rock, paper or scissors? `);
+            return getHumanChoice();
+        }
         
     }
     let humanChoice = getHumanChoice();
-    console.log(`human choice: ${humanChoice}, computer choice: ${computerChoice}`);
     
-    if ( humanChoice !== computerChoice ) playRound(humanChoice, computerChoice);
-    else if (humanChoice === computerChoice || humanScore === computerScore) {rounds++}
+    if (humanChoice === computerChoice) {
+        rounds++;
+    }
+    else if ( humanChoice !== computerChoice ) playRound(humanChoice, computerChoice);
+
+    if ( rounds === 1 && humanScore === computerScore ) rounds++;
 }
 
-// deal with wrong user input
-
-// if ( humanScore === computerScore ) console.log(`Deuce! Score is: Your Score ${humanScore} : ${computerScore} Computer Score`);
 
 if ( humanScore > computerScore ) {
-    console.log(`You won! Score is: Your Score ${humanScore} : ${computerScore} Computer Score`);
+    console.log(`You won!
+Score is: Your Score ${humanScore} : ${computerScore} Computer Score`);
 }
 else if ( humanScore < computerScore ) {
-    console.log(`You lost! Score is: Your Score ${humanScore} : ${computerScore} Computer Score`);
+    console.log(`You lost!
+Score is: Your Score ${humanScore} : ${computerScore} Computer Score`);
     
 }
 
 }
 
 playGame(4);
+
+    
