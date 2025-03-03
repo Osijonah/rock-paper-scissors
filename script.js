@@ -7,69 +7,72 @@ as long as round is not 0 call playRound
 3. test code
  */
 
-const playGame = ( rounds ) => {
+const rockBtn = document.querySelector(`#rock-btn`);
+const paperBtn = document.querySelector(`#paper-btn`);
+const scissorsBtn = document.querySelector(`#scissors-btn`);
+
+
+
+
+
     
-    let humanScore = 0, computerScore = 0;
+    let humanScore = 0, computerScore = 0; highScore = 5;
+
+
 
 const playRound = (humanChoice, computerChoice) => {
-    
 
         if (humanChoice === `Rock` && computerChoice === `Paper` || humanChoice === `Paper` && computerChoice === `Scissors` || humanChoice === `Scissors` && computerChoice === `Rock`) {
             computerScore ++;
-            return `You lose! ${computerChoice} beats ${humanChoice}`
+            console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
         }
         else if (humanChoice === `Paper` && computerChoice === `Rock` || humanChoice === `Scissors` && computerChoice === `Paper` || humanChoice === `Rock` && computerChoice === `Scissors`) {
             humanScore ++;
-            return `You win! ${humanChoice} beats ${computerChoice}`
+            console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+        }
+
+       if ( humanScore === highScore ) {
+            console.log(`You won by ${humanScore} : ${computerScore}`);
+        }
+        else if ( computerScore === highScore ) {
+            console.log(`You lost by ${humanScore} : ${computerScore}`);
         }
 }
 
-for ( ; rounds > 0; rounds-- ) {
-    const getComputerChoice = () => {
-        let choiceNumber = Math.floor(Math.random() * 10);
-        if (choiceNumber<=3) return `rock`
-        else if (choiceNumber>3 && choiceNumber<=6) return `paper`
-        else if (choiceNumber>6) return `scissors`    
-    }
-    
+
+const getComputerChoice = () => {
+    let choiceNumber = Math.floor(Math.random() * 10);
+    if (choiceNumber<=3) return `rock`
+    else if (choiceNumber>3 && choiceNumber<=6) return `paper`
+    else if (choiceNumber>6) return `scissors`    
+}
+
+const computerChoice = () => {
     let compChoice = getComputerChoice();
     
-    let computerChoice = compChoice.charAt(0).toUpperCase() + compChoice.slice(1).toLowerCase();
-    
-    
-    const getHumanChoice = () => {
-        let promptChoice = prompt(`rock, paper or scissors? `)
-        
-        if (promptChoice === `rock` || promptChoice === `paper` || promptChoice === `scissors` ) return promptChoice.charAt(0).toUpperCase() + promptChoice.slice(1).toLowerCase();
-        else {
-            alert(`That was an invalid input, please enter one of these: rock, paper or scissors? `);
-            return getHumanChoice();
-        }
-        
-    }
-    let humanChoice = getHumanChoice();
-    
-    if (humanChoice === computerChoice) {
-        rounds++;
-    }
-    else if ( humanChoice !== computerChoice ) playRound(humanChoice, computerChoice);
-
-    if ( rounds === 1 && humanScore === computerScore ) rounds++;
+    return compChoice.charAt(0).toUpperCase() + compChoice.slice(1).toLowerCase();
 }
 
 
-if ( humanScore > computerScore ) {
-    console.log(`You won!
-Score is: Your Score ${humanScore} : ${computerScore} Computer Score`);
-}
-else if ( humanScore < computerScore ) {
-    console.log(`You lost!
-Score is: Your Score ${humanScore} : ${computerScore} Computer Score`);
-    
-}
 
+rockBtn.addEventListener(`click`, () => {
+    if ( computerScore < highScore && humanScore < highScore ) {
+    let humanChoice = event.target.innerText.charAt(0).toUpperCase() + event.target.innerText.slice(1).toLowerCase()
+    playRound( humanChoice, computerChoice())
+    } 
 }
-
-playGame(4);
-
-    
+)
+paperBtn.addEventListener(`click`, () => {
+    if ( computerScore < highScore && humanScore < highScore ) {
+    let humanChoice = event.target.innerText.charAt(0).toUpperCase() + event.target.innerText.slice(1).toLowerCase()
+    playRound( humanChoice, computerChoice())
+} 
+}
+)
+scissorsBtn.addEventListener(`click`, () => {
+    if ( computerScore < highScore && humanScore < highScore ) {
+    let humanChoice = event.target.innerText.charAt(0).toUpperCase() + event.target.innerText.slice(1).toLowerCase()
+    playRound( humanChoice, computerChoice())
+    } 
+} 
+)   

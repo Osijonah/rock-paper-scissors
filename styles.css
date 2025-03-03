@@ -1,0 +1,14 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#parent-div {
+    border: 1px solid;
+    display: flex;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.button-div {
+    border: 1px solid;
+}
