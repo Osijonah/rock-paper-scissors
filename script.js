@@ -10,32 +10,35 @@ as long as round is not 0 call playRound
 const rockBtn = document.querySelector(`#rock-btn`);
 const paperBtn = document.querySelector(`#paper-btn`);
 const scissorsBtn = document.querySelector(`#scissors-btn`);
-
+const humanScoreDisplay = document.querySelector(`#human-score`);
+const computerScoreDisplay = document.querySelector(`#comp-score`);
+const resultDisplay = document.querySelector(`#result-div`);
 
 
 
 
     
     let humanScore = 0, computerScore = 0; highScore = 5;
-
+humanScoreDisplay.textContent = humanScore;
+computerScoreDisplay.textContent = computerScore;
 
 
 const playRound = (humanChoice, computerChoice) => {
 
         if (humanChoice === `Rock` && computerChoice === `Paper` || humanChoice === `Paper` && computerChoice === `Scissors` || humanChoice === `Scissors` && computerChoice === `Rock`) {
             computerScore ++;
-            console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+            computerScoreDisplay.textContent = computerScore;
         }
         else if (humanChoice === `Paper` && computerChoice === `Rock` || humanChoice === `Scissors` && computerChoice === `Paper` || humanChoice === `Rock` && computerChoice === `Scissors`) {
             humanScore ++;
-            console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+            humanScoreDisplay.textContent = humanScore;
         }
 
        if ( humanScore === highScore ) {
-            console.log(`You won by ${humanScore} : ${computerScore}`);
+            resultDisplay.innerHTML =  `You won by ${humanScore} : ${computerScore}`
         }
         else if ( computerScore === highScore ) {
-            console.log(`You lost by ${humanScore} : ${computerScore}`);
+            resultDisplay.innerHTML =  `You lost by ${humanScore} : ${computerScore}`
         }
 }
 
