@@ -9,17 +9,22 @@
 <body>
     <div id="parent-div">
         <h1>RPS GAME 🎮</h1>
+        <div>
+            <label for="winning-score">Winning Score</label> <input id="winning-score" name="winning score" type="number"/>
+        </div>
         <div id="result-div">
             <div class="score-text">Your Score</div>
             <div id="scores"><div id="human-score"></div>
             <div id="comp-score"></div></div>
             <div class="score-text">Computer Score</div>
         </div>
+        <div id="round-display"></div>
         <div id="options-div">
             <button id="rock-btn">ROCK</button>
             <button id="paper-btn">PAPER</button>
             <button id="scissors-btn">SCISSORS</button>
         </div>
+        <button id="new-game">New Game 🔄</button>
     </div>
     <script src="script.js"></script>
 </body>
