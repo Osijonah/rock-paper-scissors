@@ -51,21 +51,21 @@ const playRound = (humanChoice, computerChoice) => {
     // determining if the game should stop
        if ( humanScore === highScore ) {
         
-           optionsDiv.innerHTML = ``;
+        optionsDiv.style.display = `none`;
            setTimeout(()=>{
-                roundResults.innerHTML = ``;
-                resultDisplay.innerHTML =  `You won by ${humanScore} : ${computerScore}`;
+                roundResults.innerHTML = `You won by ${humanScore} : ${computerScore}`;
+                resultDisplay.style.display = `none`;
 
-            }, 2000)
+            }, 3000)
             
         }
         else if ( computerScore === highScore ) {
-            resultDisplay.innerHTML =  `You lost by ${humanScore} : ${computerScore}`;
-            optionsDiv.innerHTML = ``;
+            // resultDisplay.innerHTML =  `You lost by ${humanScore} : ${computerScore}`;
+            optionsDiv.style.display = `none`;
             setTimeout(()=>{
-                roundResults.innerHTML = ``;
-                resultDisplay.innerHTML =  `You won by ${humanScore} : ${computerScore}`;
-            }, 2000)
+                roundResults.innerHTML = `You lost by ${humanScore} : ${computerScore}`;
+                resultDisplay.style.display = `none`;
+            }, 3000)
         }
         
     }
